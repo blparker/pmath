@@ -20,11 +20,18 @@ export function parse(tokens, scope) {
         }
 
         if (tokens[pos].type === tokenType) {
-            // console.log(`Found ${tokenType} at pos ${pos}`)
             return tokens[pos++];
         } else {
             return null;
         }
+    }
+
+    function peekToken() {
+        return tokens[pos];
+    }
+
+    function isTokenType(tokenType) {
+        return peekToken().type === tokenType;
     }
 
     function expr() {
@@ -32,14 +39,21 @@ export function parse(tokens, scope) {
     }
 
     function sum() {
-        let l, o, r;
+        let l, o;
 
         if (l = product()) {
-            while (((o = expect(TokenType.PLUS)) || (o = expect(TokenType.MINUS))) && (r = product())) {
-                if (o.type === TokenType.PLUS) {
-                    l = pAdd(l, r);
+            while (true) {
+                if ((o = expect(TokenType.PLUS)) || (o = expect(TokenType.MINUS))) {
+                    const r = product();
+                    if (! r) {
+                        throw new Error('Missing right operand')
+                    } else if (o.type === TokenType.PLUS) {
+                        l = pAdd(l, r);
+                    } else {
+                        l = pSubtract(l, r);
+                    }
                 } else {
-                    l = pSubtract(l, r);
+                    break;
                 }
             }
 
@@ -65,7 +79,7 @@ export function parse(tokens, scope) {
     }
 
     function func() {
-        let i, e;
+        let i;
 
         if ((i = expect(TokenType.IDENT))) {
             if (expect(TokenType.LPAREN)) {
@@ -75,31 +89,32 @@ export function parse(tokens, scope) {
                 } else {
                     return null;
                 }
-            } else {
+            } else if (i.value in scope) {
                 return scope[i.value];
+            } else {
+                throw new Error(`Cannot find identifier '${i.value}' in scope`);
             }
         } else {
             return null;
         }
     }
 
-    function peekToken() {
-        return tokens[pos];
-    }
-
-    function isTokenType(tokenType) {
-        return peekToken().type === tokenType;
-    }
-
     function product() {
-        let l, r, o;
+        let l, o;
 
         if (l = atom()) {
-            while (((o = expect(TokenType.MULT)) || (o = expect(TokenType.DIV))) && (r = atom())) {
-                if (o.type === TokenType.MULT) {
-                    l = pMultiply(l, r);
+            while (true) {
+                if ((o = expect(TokenType.MULT)) || (o = expect(TokenType.DIV))) {
+                    const r = atom();
+                    if (! r) {
+                        throw new Error('Missing right operand')
+                    } else if (o.type === TokenType.MULT) {
+                        l = pMultiply(l, r);
+                    } else {
+                        l = pDivide(l, r);
+                    }
                 } else {
-                    l = pDivide(l, r);
+                    break;
                 }
             }
 

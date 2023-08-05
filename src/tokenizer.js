@@ -57,7 +57,6 @@ export function* tokenize(input) {
     }
 
     function ident(pos) {
-        const val = [];
         const partial = input.substring(pos);
 
         let matched;
