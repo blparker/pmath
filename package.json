@@ -7,5 +7,6 @@
     "test": "node parser_tests.js"
   },
   "author": "blparker",
-  "license": "ISC"
+  "license": "ISC",
+  "type": "module"
 }

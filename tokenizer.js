@@ -1,4 +1,4 @@
-const TokenType = {
+export const TokenType = {
     NUM: 'number',
     IDENT: 'ident',
     PLUS: 'plus',
