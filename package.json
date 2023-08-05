@@ -4,7 +4,7 @@
   "description": "A simple string template for performing precision math",
   "main": "index.js",
   "scripts": {
-    "test": "node parser_tests.js",
+    "test": "node test/parser_tests.js",
     "build": "./node_modules/.bin/esbuild index.js --bundle --outfile=./dist/dist.js"
   },
   "author": "blparker",

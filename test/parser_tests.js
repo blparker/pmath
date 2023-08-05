@@ -1,4 +1,4 @@
-import { pmath } from './index.js';
+import { pmath } from '../index.js';
 
 
 function assertEquals(expected, actual, message) {

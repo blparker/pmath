@@ -1,5 +1,5 @@
-import { tokenize } from './tokenizer.js';
-import { parse } from './parser.js';
+import { tokenize } from './src/tokenizer.js';
+import { parse } from './src/parser.js';
 
 export function pmath(strings, ...keys) {
     const input = strings[0] + keys.map((key, i) => key + strings[i + 1]).join('');
