@@ -1,0 +1,11 @@
+{
+  "name": "pmath",
+  "version": "1.0.0",
+  "description": "A simple string template for performing precision math",
+  "main": "index.js",
+  "scripts": {
+    "test": "node parser_tests.js"
+  },
+  "author": "blparker",
+  "license": "ISC"
+}
