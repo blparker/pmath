@@ -1,7 +1,7 @@
 import { tokenize } from './tokenizer.js';
 import { parse } from './parser.js';
 
-export function pMath(strings, ...keys) {
+export function pmath(strings, ...keys) {
     const input = strings[0] + keys.map((key, i) => key + strings[i + 1]).join('');
 
     return function (scope = {}) {

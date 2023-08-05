@@ -48,21 +48,21 @@ Yuck. Seems like quite a bit of readability we're giving up.
 Simple usage:
 
 ```javascript
-> pMath`0.1 + 0.2`();
+> pmath`0.1 + 0.2`();
 0.3
 ```
 
 The tag returns a function that must be invoked so that scope can be provided if necessary:
 
 ```javascript
-> pMath`0.1 + foo`({ foo: 0.2 });
+> pmath`0.1 + foo`({ foo: 0.2 });
 0.3
 ```
 
 The above expression in the "What is this?" section can be expressed with a provided scope as:
 
 ```javascript
-> pMath`oX - (xLeft + xTickGap * numTicksLeftOrigin)`({
+> pmath`oX - (xLeft + xTickGap * numTicksLeftOrigin)`({
     oX: 1,
     xLeft: 2,
     xTickGap: 3,

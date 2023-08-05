@@ -1,4 +1,4 @@
-import { pMath } from './index.js';
+import { pmath } from './index.js';
 
 
 function assertEquals(expected, actual, message) {
@@ -11,7 +11,7 @@ function assertEquals(expected, actual, message) {
 
 
 function run(input, scope = {}) {
-    return pMath`${input}`(scope);
+    return pmath`${input}`(scope);
 }
 
 
