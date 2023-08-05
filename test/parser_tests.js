@@ -3,9 +3,9 @@ import { pmath } from '../index.js';
 
 function assertEquals(expected, actual, message) {
     if (expected !== actual) {
-        console.error(`Expected ${expected}, got ${actual}`);
+        console.error('\x1b[31m%s\x1b[0m', `Expected ${expected}, got ${actual}`);
     } else {
-        console.log('Pass');
+        console.log('\x1b[32m%s\x1b[0m', 'Pass');
     }
 }
 
@@ -29,3 +29,4 @@ assertEquals(3, run('foo + bar', {foo: 1, bar: 2}));
 assertEquals(3, run('foo + bar()', {foo: 1, bar: () => 2}));
 assertEquals(3, run('bar(1, 2)', {bar: (a, b) => a + b}));
 assertEquals(0.32, run('0.1 + 0.22'));
+assertEquals(0.12, run('0.1 + 0.02'));
