@@ -1,5 +1,5 @@
 {
-  "name": "pmath",
+  "name": "pmath-js",
   "version": "1.0.0",
   "description": "A simple string template for performing precision math",
   "main": "index.js",
