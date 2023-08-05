@@ -41,7 +41,7 @@ Yuck. Seems like quite a bit of readability we're giving up.
 
 ## Installation
 
-`npm install pmath`
+`npm install pmath-js`
 
 ## Usage
 

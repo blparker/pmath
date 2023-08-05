@@ -12,5 +12,9 @@
   "type": "module",
   "dependencies": {
     "esbuild": "0.18.17"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blparker/pmath"
   }
 }
